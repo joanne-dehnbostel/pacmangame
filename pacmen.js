@@ -24,12 +24,12 @@ function makePac() {
   let game = document.getElementById('game');
   let newimg = document.createElement('img');
   newimg.style.position = 'absolute';
-  newimg.src = './images/PacMan1.png';
+  newimg.src = './PacMan1.png';
   newimg.width = 100;
 
   // TODO: set position here
 newimg.style.position = "absolute";
-newimg.src = "./images/PacMan1.png";
+newimg.src = "./PacMan1.png";
 newimg.width = 100;
 newimg.style.left = postion.x;
 newimg.style.top = position.y;
