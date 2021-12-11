@@ -20,14 +20,14 @@ function makePac() {
   let velocity = setToRandom(10); // {x:?, y:?}
   let position = setToRandom(200);
 
-  // Add image to div id = game
+  // Adds image to div id = game
   let game = document.getElementById('game');
   let newimg = document.createElement('img');
   newimg.style.position = 'absolute';
   newimg.src = './PacMan1.png';
   newimg.width = 100;
 
-  // TODO: set position here
+  // position is set here
 newimg.style.position = "absolute";
 newimg.src = "./PacMan1.png";
 newimg.width = 100;
@@ -35,10 +35,10 @@ newimg.style.left = postion.x;
 newimg.style.top = position.y;
 
 
-  // TODO add new Child image to game
+  // adds a new Child image to game
   game.appendChild(newimg);
 
-  // return details in an object
+  // returns details in an object
   return {
     position,
     velocity,
@@ -47,7 +47,7 @@ newimg.style.top = position.y;
 }
 
 function update() {
-  // loop over pacmen array and move each one and move image in DOM
+  // loops over pacmen array and moves each one and moves image in DOM
   pacMen.forEach((item) => {
     checkCollisions(item);
     item.position.x += item.velocity.x;
@@ -60,7 +60,7 @@ function update() {
 }
 
 function checkCollisions(item) {
-  // TODO: detect collision with all walls and make pacman bounce
+  // detects collision with all walls and makes pacman bounce
   if(
     item.position.x + item.velocity.x + item.newimg.width > window.innerWidth ||
     item.position.x + item.velocity.x <0
@@ -74,10 +74,10 @@ item.velocity.y = -item.velocity.y;
 }
 
 function makeOne() {
-  pacMen.push(makePac()); // add a new PacMan
+  pacMen.push(makePac()); // adds a new PacMan
 }
 
-//don't change this line
+//necessary to prevent crashes
 if (typeof module !== 'undefined') {
   module.exports = { checkCollisions, update, pacMen };
 }
