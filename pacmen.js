@@ -20,22 +20,17 @@ function makePac() {
   let velocity = setToRandom(10); // {x:?, y:?}
   let position = setToRandom(200);
 
-  // Adds image to div id = game
+  // Add image to div id = game
   let game = document.getElementById('game');
   let newimg = document.createElement('img');
   newimg.style.position = 'absolute';
   newimg.src = './images/PacMan1.png';
   newimg.width = 100;
 
-  // position is set here
-newimg.style.position = "absolute";
-newimg.src = "./images/PacMan1.png";
-newimg.width = 100;
+ 
 newimg.style.left = position.x;
 newimg.style.top = position.y;
-
-
-  // adds a new Child image to game
+ // adds new Child image to game
   game.appendChild(newimg);
 
   // returns details in an object
@@ -47,37 +42,57 @@ newimg.style.top = position.y;
 }
 
 function update() {
-  // loops over pacmen array and moves each one and moves image in DOM
+  // loop over pacmen array and move each one and move image in DOM
   pacMen.forEach((item) => {
+   
+    
     checkCollisions(item);
     item.position.x += item.velocity.x;
     item.position.y += item.velocity.y;
 
     item.newimg.style.left = item.position.x;
     item.newimg.style.top = item.position.y;
+ 
   });
+  
   setTimeout(update, 20);
 }
 
 function checkCollisions(item) {
   // detects collision with all walls and makes pacman bounce
-  if(
+  
+ if (
     item.position.x + item.velocity.x + item.newimg.width > window.innerWidth ||
-    item.position.x + item.velocity.x <0
+    item.position.x + item.velocity.x < 0
   )
-  item.velocity.x = -item.velocity.x;
-if (
-  item.position.y + item.velocity.y + item.newimg.height > window.innerHeight ||
-  item.position.y + item.velocity.y <0
-)
-item.velocity.y = -item.velocity.y;
+    item.velocity.x = -item.velocity.x;
+
+    if ((item.newimg.src = pacArray[0][0])&&(item.velocity.x < 0)) {
+      item.newimg.src = pacArray[1][0];
+  }
+  else if ((item.newimg.src = pacArray[0][1])&&(item.velocity.x < 0)) {
+      item.newimg.src = pacArray[1][1];
+  }
+  else if ((item.newimg.src = pacArray[1][0])&&(item.velocity.x > 0)) {
+      item.newimg.src = pacArray[0][0];
+  }
+  else if ((item.newimg.src = pacArray[1][1])&&(item.velocity.x > 0)) {
+      item.newimg.src = pacArray[0][1];
+  }
+
+  if (
+    item.position.y + item.velocity.y + item.newimg.height > window.innerHeight ||
+    item.position.y + item.velocity.y < 0
+  )
+    item.velocity.y = -item.velocity.y;
 }
+
 
 function makeOne() {
   pacMen.push(makePac()); // adds a new PacMan
 }
 
-//necessary to prevent crashes
+//don't change this line
 if (typeof module !== 'undefined') {
   module.exports = { checkCollisions, update, pacMen };
 }
