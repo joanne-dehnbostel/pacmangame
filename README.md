@@ -9,10 +9,12 @@ How to play the game:
 <li>When you click the "Add PacMan" button, a new pacman should appear at a random position on the screen.</li>
 <li>When you click the "Start Game" button, the pacman or pacmen created should start moving at random velocity on the screen.</li>
 <li>When a given pacman hits the edge of the screen, it should change position to stay within the frame of the web page.</li>
-<ul/>
+</ul>
+
+
 ***
   
-Future improvements will be include adding images for different characters and allow the user to choose which character they would like to see
+Future improvements will include adding images for different characters and allow the user to choose which character they would like to see
 ***
   
 This repository is covered under an MIT License
